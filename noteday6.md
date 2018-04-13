@@ -1,6 +1,7 @@
 ### DATABASE MANAGEMENT SYSTEM(DBMS)
-<p>
+
 `````
+<p>
 DBMS-- Database Management System
 
 *Create
@@ -8,7 +9,8 @@ DBMS-- Database Management System
 *Delete
 *Query  
 MainFrame is used to store the data.
-And sql is used to mainpulate the data.</p>
+And sql is used to mainpulate the data.
+In the whole world there is only one Mainframe that is IBM </p>
 <br>
 <p>
 Q.1 What is Backend and Frontend process
@@ -86,4 +88,44 @@ Q.10 What is Super key?
 * If the super key exits present it will become 4th normal form.
 * Ex.Super key(id,test_no).
 </p>
+<p>
+
+## Sublanguages:
+<p>
+# DDL - Data definition Language
+
+* Commands in DDL
+	* create 
+	* Alter
+	* Drop
+	* Truncate
+</p><br>
+<p>
+# DML - Data Manipulation Language
+
+* Commands in DML
+	* Insert
+	* update
+	* Delete
+	* Merge</p></br>
+<p>
+# DCL - Data Control Language
+
+* Commands in DCL
+	* Grand
+	* Revoke
+	* Deny</p><br>
+<p>	
+# TCL - Transaction Control Language
+
+* Commands in TCL
+	* Commit
+	* Rollback
+	* Savepoint</p><br>
+<p>
+# DQL - Data Query Language
+
+* Commands in DQL
+	* Select</p>
+
 `````
