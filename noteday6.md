@@ -86,9 +86,31 @@ Q.10 What is Super key?
 * It is made up of multiple columns.
 * If the super key exits present it will become 4th normal form.
 * Ex.Super key(id,test_no).
-</p>
+</p><br>
 <p>
+Q.11 Which is not a integrity constraint?
 
+* a)Unique 
+* B)Not Null
+* C)Default
+* Default is not a Integrity constrain.</p><br>
+<p>
+Q.12 What is Normalization?
+
+* There are 5 types of normal forms
+
+* 1st NormalForm
+	* Atomicity
+	* Partial dependency
+	* Functional dependency
+* 2nd NormalForm
+	*Seperate the tables.
+* 3rd NormalForm
+	* If it consist of primary key then it has 3d normal form.
+* 4th NormalForm
+	* if a table consist of super key.
+* 5th NormalForm
+	* if a table consist of transit class along with super key.</p><br> 
 ## Sublanguages:
 <p>
 # DDL - Data definition Language
