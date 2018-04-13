@@ -1,8 +1,7 @@
 ### DATABASE MANAGEMENT SYSTEM(DBMS)
 <p>
-`````
 
-DBMS-- Database Management System
+### DBMS-- Database Management System
 
 *Create
 *Insert
@@ -127,5 +126,3 @@ Q.10 What is Super key?
 
 * Commands in DQL
 	* Select</p>
-
-`````
