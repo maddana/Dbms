@@ -49,12 +49,12 @@ Q.5 What is freezing data?
 
 * The data which can't accept no more changes is called freezing.</p><br>
 <p>
-Q.6 What is Masterdata and Transaction data?
+Q.6 What is Masterdata and Transition data?
 
 * Masterdata -- Data which is permanent and won't change is called masterdata.
 * ex.name,city.
 
-* Transaction data -- Data that occurs based on the event.
+* Transition data -- Data that occurs based on the event.
 * Data occurs only when a perticular event happens.
 * ex.Only when the event(month end) happens the data(salary)
 will be credited or initiated. 
