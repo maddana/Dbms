@@ -1,0 +1,306 @@
+mysql> use studentrecord;
+Database changed
+mysql> select ID,f_name,m1 from student natural join marks;
++------+------------+------+
+| ID   | f_name     | m1   |
++------+------------+------+
+| 4001 | Amit       |   45 |
+| 4001 | Amit       |   35 |
+| 4001 | Amit       |   15 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |   40 |
+| 4003 | Manish     |   30 |
+| 4003 | Manish     |   30 |
+| 4004 | Akashya    |   35 |
+| 4004 | Akashya    |   36 |
+| 4004 | Akashya    |   35 |
+| 4005 | sugumar    |   39 |
+| 4005 | sugumar    |   29 |
+| 4005 | sugumar    |   39 |
+| 4006 | rajesh     |   40 |
+| 4008 | kiran      |   45 |
+| 4008 | kiran      |   30 |
+| 4008 | kiran      |    0 |
+| 4009 | uma        |   10 |
+| 4009 | uma        |   30 |
+| 4010 | amar preet |   15 |
+| 4010 | amar preet |   45 |
++------+------------+------+
+22 rows in set (0.06 sec)
+
+mysql> select ID,f_name,m1 from student natural join marks where testno=1;
++------+---------+------+
+| ID   | f_name  | m1   |
++------+---------+------+
+| 4001 | Amit    |   45 |
+| 4002 | harshit |    0 |
+| 4003 | Manish  |   30 |
+| 4004 | Akashya |   35 |
+| 4005 | sugumar |   39 |
+| 4006 | rajesh  |   40 |
+| 4008 | kiran   |   45 |
++------+---------+------+
+7 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name,b.m1 from student a inner join marks b on(a.id=b.id);
++------+------------+------+
+| ID   | f_name     | m1   |
++------+------------+------+
+| 4001 | Amit       |   45 |
+| 4001 | Amit       |   35 |
+| 4001 | Amit       |   15 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |   40 |
+| 4003 | Manish     |   30 |
+| 4003 | Manish     |   30 |
+| 4004 | Akashya    |   35 |
+| 4004 | Akashya    |   36 |
+| 4004 | Akashya    |   35 |
+| 4005 | sugumar    |   39 |
+| 4005 | sugumar    |   29 |
+| 4005 | sugumar    |   39 |
+| 4006 | rajesh     |   40 |
+| 4008 | kiran      |   45 |
+| 4008 | kiran      |   30 |
+| 4008 | kiran      |    0 |
+| 4009 | uma        |   10 |
+| 4009 | uma        |   30 |
+| 4010 | amar preet |   15 |
+| 4010 | amar preet |   45 |
++------+------------+------+
+22 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name,b.m1 from student a inner join marks b on(a.id=b.id and testno=1);
++------+---------+------+
+| ID   | f_name  | m1   |
++------+---------+------+
+| 4001 | Amit    |   45 |
+| 4002 | harshit |    0 |
+| 4003 | Manish  |   30 |
+| 4004 | Akashya |   35 |
+| 4005 | sugumar |   39 |
+| 4006 | rajesh  |   40 |
+| 4008 | kiran   |   45 |
++------+---------+------+
+7 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name,b.m1 from student a left outer join marks b on(a.id=b.id);
++------+------------+------+
+| ID   | f_name     | m1   |
++------+------------+------+
+| 4001 | Amit       |   45 |
+| 4001 | Amit       |   35 |
+| 4001 | Amit       |   15 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |    0 |
+| 4002 | harshit    |   40 |
+| 4003 | Manish     |   30 |
+| 4003 | Manish     |   30 |
+| 4004 | Akashya    |   35 |
+| 4004 | Akashya    |   36 |
+| 4004 | Akashya    |   35 |
+| 4005 | sugumar    |   39 |
+| 4005 | sugumar    |   29 |
+| 4005 | sugumar    |   39 |
+| 4006 | rajesh     |   40 |
+| 4008 | kiran      |   45 |
+| 4008 | kiran      |   30 |
+| 4008 | kiran      |    0 |
+| 4009 | uma        |   10 |
+| 4009 | uma        |   30 |
+| 4010 | amar preet |   15 |
+| 4010 | amar preet |   45 |
++------+------------+------+
+22 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name,b.m1 from student a left outer join marks b on(a.id=b.id and testno=1);
++------+------------+------+
+| ID   | f_name     | m1   |
++------+------------+------+
+| 4001 | Amit       |   45 |
+| 4002 | harshit    |    0 |
+| 4003 | Manish     |   30 |
+| 4004 | Akashya    |   35 |
+| 4005 | sugumar    |   39 |
+| 4006 | rajesh     |   40 |
+| 4008 | kiran      |   45 |
+| 4009 | uma        | NULL |
+| 4010 | amar preet | NULL |
++------+------------+------+
+9 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name,b.m1 from student a left outer join marks b on(a.id=b.id and b.testno=1) where b.m1 is null;
++------+------------+------+
+| ID   | f_name     | m1   |
++------+------------+------+
+| 4009 | uma        | NULL |
+| 4010 | amar preet | NULL |
++------+------------+------+
+2 rows in set (0.00 sec)
+
+
+mysql> select a.f_name,b.cname from student a inner join connect1 c on(a.id=c.id)
+    -> inner join city b on(b.cid=c.cid);
++---------+-----------+
+| f_name  | cname     |
++---------+-----------+
+| Amit    | bangalore |
+| harshit | KR puram  |
+| Manish  | hebbal    |
+| Akashya | Nagawara  |
+| sugumar | Henoor    |
+| rajesh  | avadi     |
+| kiran   | chromepet |
++---------+-----------+
+7 rows in set (0.06 sec)
+
+mysql> select a.ID,a.f_name,b.cname,d.dname,s.sname from student a inner join connect1 c on(a.ID=c.ID)
+    -> inner join city b on(b.cid=c.cid) inner join district d on(d.did=b.did)
+    -> inner join state s on(s.sid=d.sid);
++------+---------+-----------+-----------+-----------+
+| ID   | f_name  | cname     | dname     | sname     |
++------+---------+-----------+-----------+-----------+
+| 4001 | Amit    | bangalore | bangalore | karnataka |
+| 4002 | harshit | KR puram  | bangalore | karnataka |
+| 4003 | Manish  | hebbal    | bangalore | karnataka |
+| 4004 | Akashya | Nagawara  | bangalore | karnataka |
+| 4005 | sugumar | Henoor    | bangalore | karnataka |
+| 4006 | rajesh  | avadi     | chennai   | tamilnadu |
+| 4008 | kiran   | chromepet | chennai   | tamilnadu |
++------+---------+-----------+-----------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name case when b.M1 is null or b.M2 is null then
+    -> 'Absent'
+    -> else
+    -> (b.M1+b.M2+b.M3+b.M4+b.M5) end TOTAL from student a left outer join marks b on(a.id=b.id and testno=1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'case when b.M1 is null or b.M2 is null then
+'Absent'
+else
+(b.M1+b.M2+b.M3+b.M4+b' at line 1
+mysql> select a.ID,a.f_name, case when b.M1 is null or b.M2 is null then
+    -> 'Absent'
+    -> else
+    -> (b.M1+b.M2+b.M3+b.M4+b.M5) end TOTAL from student a left outer join marks b on(a.id=b.id and testno=1);
++------+------------+--------+
+| ID   | f_name     | TOTAL  |
++------+------------+--------+
+| 4001 | Amit       | 235    |
+| 4002 | harshit    | 152    |
+| 4003 | Manish     | 162    |
+| 4004 | Akashya    | 100    |
+| 4005 | sugumar    | 182    |
+| 4006 | rajesh     | 212    |
+| 4008 | kiran      | 236    |
+| 4009 | uma        | Absent |
+| 4010 | amar preet | Absent |
++------+------------+--------+
+9 rows in set (0.00 sec)
+
+mysql> select a.ID,a.f_name, case when c.cname='bangalore' then 'From Bangalore'
+    -> else 'Not from Bangalore' end RES from student a left outer join connect1 c1 on(a.ID=c1.ID)
+    -> left outer join city c on(c.cid=c1.cid);
++------+------------+--------------------+
+| ID   | f_name     | RES                |
++------+------------+--------------------+
+| 4001 | Amit       | From Bangalore     |
+| 4002 | harshit    | Not from Bangalore |
+| 4003 | Manish     | Not from Bangalore |
+| 4004 | Akashya    | Not from Bangalore |
+| 4005 | sugumar    | Not from Bangalore |
+| 4006 | rajesh     | Not from Bangalore |
+| 4008 | kiran      | Not from Bangalore |
+| 4009 | uma        | Not from Bangalore |
+| 4010 | amar preet | Not from Bangalore |
++------+------------+--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select id,total,total/5 avg from(select id,(M1+M2+M3+M4+M5) total,testno from marks) A;
++------+-------+---------+
+| id   | total | avg     |
++------+-------+---------+
+| 4001 |   235 | 47.0000 |
+| 4001 |   185 | 37.0000 |
+| 4001 |   141 | 28.2000 |
+| 4002 |   152 | 30.4000 |
+| 4002 |   142 | 28.4000 |
+| 4002 |   214 | 42.8000 |
+| 4003 |   162 | 32.4000 |
+| 4003 |   182 | 36.4000 |
+| 4004 |   100 | 20.0000 |
+| 4004 |   101 | 20.2000 |
+| 4004 |   140 | 28.0000 |
+| 4005 |   182 | 36.4000 |
+| 4005 |   122 | 24.4000 |
+| 4005 |   185 | 37.0000 |
+| 4006 |   212 | 42.4000 |
+| 4007 |   145 | 29.0000 |
+| 4007 |   158 | 31.6000 |
+| 4008 |   236 | 47.2000 |
+| 4008 |   145 | 29.0000 |
+| 4008 |   152 | 30.4000 |
+| 4009 |   152 | 30.4000 |
+| 4009 |   158 | 31.6000 |
+| 4010 |   176 | 35.2000 |
+| 4010 |   235 | 47.0000 |
++------+-------+---------+
+24 rows in set (0.02 sec)
+
+mysql> desc A;
+ERROR 1146 (42S02): Table 'studentrecord.a' doesn't exist
+mysql> select a.id,a.f_name,b.total,b.total/5 avg from student a inner join (select id,(M1+M2+M3+M4+M5) total,testno from marks)b on(a.id=b.id);
++------+------------+-------+---------+
+| id   | f_name     | total | avg     |
++------+------------+-------+---------+
+| 4001 | Amit       |   235 | 47.0000 |
+| 4001 | Amit       |   185 | 37.0000 |
+| 4001 | Amit       |   141 | 28.2000 |
+| 4002 | harshit    |   152 | 30.4000 |
+| 4002 | harshit    |   142 | 28.4000 |
+| 4002 | harshit    |   214 | 42.8000 |
+| 4003 | Manish     |   162 | 32.4000 |
+| 4003 | Manish     |   182 | 36.4000 |
+| 4004 | Akashya    |   100 | 20.0000 |
+| 4004 | Akashya    |   101 | 20.2000 |
+| 4004 | Akashya    |   140 | 28.0000 |
+| 4005 | sugumar    |   182 | 36.4000 |
+| 4005 | sugumar    |   122 | 24.4000 |
+| 4005 | sugumar    |   185 | 37.0000 |
+| 4006 | rajesh     |   212 | 42.4000 |
+| 4008 | kiran      |   236 | 47.2000 |
+| 4008 | kiran      |   145 | 29.0000 |
+| 4008 | kiran      |   152 | 30.4000 |
+| 4009 | uma        |   152 | 30.4000 |
+| 4009 | uma        |   158 | 31.6000 |
+| 4010 | amar preet |   176 | 35.2000 |
+| 4010 | amar preet |   235 | 47.0000 |
++------+------------+-------+---------+
+22 rows in set (0.02 sec)
+
+mysql> select x1.id,x1.f_name,y1.cname from student x1 inner join (select a.id,b.cname from connect1 a inner join city b on(a.cid=b.cid))y1 on (x1.id=y1.id);
++------+---------+-----------+
+| id   | f_name  | cname     |
++------+---------+-----------+
+| 4001 | Amit    | bangalore |
+| 4002 | harshit | KR puram  |
+| 4003 | Manish  | hebbal    |
+| 4004 | Akashya | Nagawara  |
+| 4005 | sugumar | Henoor    |
+| 4006 | rajesh  | avadi     |
+| 4008 | kiran   | chromepet |
++------+---------+-----------+
+7 rows in set (0.00 sec)
+
+
+mysql> select id,f_name from student where id not in(select id from connect1 where cid in(select cid from city where did in(select did from district where sid in(select sid from state where sname='karnataka'))));
++------+------------+
+| id   | f_name     |
++------+------------+
+| 4006 | rajesh     |
+| 4008 | kiran      |
+| 4009 | uma        |
+| 4010 | amar preet |
++------+------------+
+4 rows in set (0.00 sec)

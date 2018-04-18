@@ -90,8 +90,7 @@ left outer join city c on(c.cid=c1.cid);
 </p><br>
 
 Q.6 Write a query to dispaly id and name who is not from karnataka.
-	* select dname from  district;
-	* select dname from city where dname not in(select dname from  district);
+	* select id,f_name from student where id not in(select id from connect1 where cid in(select cid from city where did in(select did from district where sid in(select sid from state where sname='karnataka')))); 
 
 
 
