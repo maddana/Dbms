@@ -79,6 +79,9 @@ left outer join city c on(c.cid=c1.cid);
 
 * 2. Normal subquery
 	* A subquery written 'where' clause instead of giving a value for comparison, that query wriiten.
+//simple subquery
+	* select id from marks where testno=1;
+	* select i,f_name from student where id not in(select id from marks where testno=1);
 	* A normal subquery is of type 1. Single column subquery. 2. Multi cloumn subquery.
 	* 3. Sinle row subquery
 		* '=','>','<'
@@ -86,6 +89,9 @@ left outer join city c on(c.cid=c1.cid);
 		* 'in','> all','> any','< all','< any' (also sinle row operators)
 </p><br>
 
+Q.6 Write a query to dispaly id and name who is not from karnataka.
+	* select dname from  district;
+	* select dname from city where dname not in(select dname from  district);
 
 
 
