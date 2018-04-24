@@ -146,9 +146,35 @@ Q.6 print the first not null values in the columns
 Q.6 Write a query to display student id ,name,and number of test he has taken?
 
 	* select ID,f_name,testno 
+</p><br>
+<p>
 Q.7 Least city name along with the number of people are there?
+</p><br>
+<p>
 Q.8 Least city name along with the number of people are there in each city and if no one stays in the city give null?
 
 </p><br>
 
+<p>
+
+Q.9 Aggregate and non aggregate
+
+	* select count(*),count(ID),sum(M1) from student;
+	* count() is aggregate .
+	* select ID,count(*),count(ID),sum(M1), from marks group by ID;
+	* ID is non aggregate which can be used only group by when we have to use both aggr and non-aggre functions.
+	* When using aggregate we have to use having function instead of where ,where is used for non-aggre functions.
+	* ex.select ID,count(*),count(ID),sum(M1),avg(M1) from marks where ID between 4001 and 4005 group by ID having count(*) >1;
+	
+	+------+----------+-----------+---------+---------+
+	| ID   | count(*) | count(ID) | sum(M1) | avg(M1) |
+	+------+----------+-----------+---------+---------+
+	| 4001 |        3 |         3 |      95 | 31.6667 |
+	| 4002 |        3 |         3 |      40 | 13.3333 |
+	| 4003 |        2 |         2 |      60 | 30.0000 |
+	| 4004 |        3 |         3 |     106 | 35.3333 |
+	| 4005 |        3 |         3 |     107 | 35.6667 |
+	+------+----------+-----------+---------+---------+
+	5 rows in set (0.06 sec)
+</p><br>
 
