@@ -1,5 +1,9 @@
 ### Joints in Dbms
-
+<p>
+# Join
+* The join is denormalization.
+* Rule for joins there should be same data in both tables. 
+</p><br>
 # Inner join
 
 * If the tables have same column data then inner join is used to refer the data.
@@ -69,6 +73,7 @@ left outer join city c on(c.cid=c1.cid);
 # Sub-Query
 
 * 1. In-Line View
+	* A logical table is called view it is temperary view.
 	* A subquery written 'from' clause instead of using a table name.
 	* select id,(M1+M2+M3+M4+M5) total,testno from marks
 	* select id,total,total/5 avg from(select id,(M1+M2+M3+M4+M5) total,testno from marks) A;
@@ -88,10 +93,10 @@ left outer join city c on(c.cid=c1.cid);
 	* 4. Multiple row subquery
 		* 'in','> all','> any','< all','< any' (also sinle row operators)
 </p><br>
-
+<p>
 Q.6 Write a query to dispaly id and name who is not from karnataka.
 	* select id,f_name from student where id not in(select id from connect1 where cid in(select cid from city where did in(select did from district where sid in(select sid from state where sname='karnataka')))); 
-
+</p><br>
 
 
 

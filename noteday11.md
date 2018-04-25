@@ -145,13 +145,75 @@ Q.6 print the first not null values in the columns
 <p>
 Q.6 Write a query to display student id ,name,and number of test he has taken?
 
-	* select ID,f_name,testno 
+	* select ID,count(*) N_TEST from marks group by ID;
+	* select a.ID,a.f_name,b.N_TEST from student a inner join (select ID,count(*) N_TEST from marks group by ID)b on a.ID=b.ID;
+	
+	+------+------------+--------+
+	| ID   | f_name     | N_TEST |
+	+------+------------+--------+
+	| 4001 | Amit       |      3 |
+	| 4002 | harshit    |      3 |
+	| 4003 | Manish     |      2 |
+	| 4004 | Akashya    |      3 |
+	| 4005 | sugumar    |      3 |
+	| 4006 | rajesh     |      1 |
+	| 4008 | kiran      |      3 |
+	| 4009 | uma        |      2 |
+	| 4010 | amar preet |      2 |
+	+------+------------+--------+
+	9 rows in set (0.13 sec)
+	
+	* select s.ID,s.f_name,count(*) N_TEST from student s,marks m where s.ID=m.ID group by s.ID;
+	
+	*  select s.ID,s.f_name,count(*) N_TEST from student s,marks m where s.ID=m.ID group by s.ID having count(*)>2 order by count(*);
+
+	*  select a.ID,a.f_name,b.N_TEST from student a inner join (select ID,count(*) N_TEST from marks group by ID having count(*)>2)b on a.ID=b.ID order by b.N_TEST,a.ID desc;
 </p><br>
 <p>
 Q.7 Least city name along with the number of people are there?
+
+	* select cid,count(*) cno from conneect1 group by cid;
+	
+	* select a.cid,a.cname,b.cno from city a inner join(select cid,count(*) cno from connect1 group by cid) b on(a.cid=b.cid);
+
+	+------+-----------+-----+
+	| cid  | cname     | cno |
+	+------+-----------+-----+
+	| 5001 | bangalore |   1 |
+	| 5002 | hebbal    |   1 |
+	| 5003 | KR puram  |   1 |
+	| 5004 | Nagawara  |   1 |
+	| 5005 | Henoor    |   1 |
+	| 5006 | avadi     |   2 |
+	| 5009 | chromepet |   1 |
+	+------+-----------+-----+
+	7 rows in set (0.06 sec)
 </p><br>
 <p>
 Q.8 Least city name along with the number of people are there in each city and if no one stays in the city give null?
+
+	* select a.cid,a.cname,ifnull(b.cno,'null') from city a left outer join(select cid,count(*) cno from connect1 group by cid) b on(a.cid=b.cid);
+
+	+------+-----------+----------------------+
+	| cid  | cname     | ifnull(b.cno,'null') |
+	+------+-----------+----------------------+
+	| 5001 | bangalore | 1                    |
+	| 5002 | hebbal    | 1                    |
+	| 5003 | KR puram  | 1                    |
+	| 5004 | Nagawara  | 1                    |
+	| 5005 | Henoor    | 1                    |
+	| 5006 | avadi     | 2                    |
+	| 5007 | T nagar   | null                 |
+	| 5008 | Guindy    | null                 |
+	| 5009 | chromepet | 1                    |
+	| 5010 | meerut    | null                 |
+	| 5011 | agra      | null                 |
+	+------+-----------+----------------------+
+	11 rows in set (0.01 sec)
+
+	* Using In-line view
+		
+		* 
 
 </p><br>
 
@@ -177,4 +239,57 @@ Q.9 Aggregate and non aggregate
 	+------+----------+-----------+---------+---------+
 	5 rows in set (0.06 sec)
 </p><br>
+<p>
+Q.10 Write a query to display day name along with no of students born in each day?
+	
+	* select date_format(dob,'%a'),count(*) from student group by date_format(dob,'%a'); 
 
+	+-----------------------+----------+
+	| date_format(dob,'%a') | count(*) |
+	+-----------------------+----------+
+	| Fri                   |        1 |
+	| Mon                   |        2 |
+	| Sat                   |        3 |
+	| Sun                   |        1 |
+	| Thu                   |        2 |
+	+-----------------------+----------+
+	5 rows in set (0.03 sec)
+</p><br>
+<p>
+Q.11 Dispaly the date which has highest students?
+
+	* select date_format(dob,'%a'),count(*) from student group by date_format(dob,'%a') having count(*) in(select max(b.x) from (select count(*) x from student group by date_format(dob,'%a'))b);
+
+	+-----------------------+----------+
+	| date_format(dob,'%a') | count(*) |
+	+-----------------------+----------+
+	| Sat                   |        3 |
+	+-----------------------+----------+
+	1 row in set (0.00 sec)
+</p><br>
+<p>
+Q.12 write a query to to show month wise no students born?Write a query whose birthday lies in next week?
+
+	*  select date_format(dob,'%M'),count(*) from student group by date_format(dob,'%M');
+
+	+-----------------------+----------+
+	| date_format(dob,'%M') | count(*) |
+	+-----------------------+----------+
+	| December              |        1 |
+	| February              |        3 |
+	| June                  |        1 |
+	| March                 |        2 |
+	| May                   |        1 |
+	| October               |        1 |
+	+-----------------------+----------+
+	
+	* select date_format(dob,'%M'),count(*) from student group by date_format(dob,'%M') having count(*) in(select max(b.x) from (select count(*) x from student group by date_format(dob,'%M'))b);
+
+	+-----------------------+----------+
+	| date_format(dob,'%M') | count(*) |
+	+-----------------------+----------+
+	| February              |        3 |
+	+-----------------------+----------+
+	1 row in set (0.00 sec)
+
+	* 
