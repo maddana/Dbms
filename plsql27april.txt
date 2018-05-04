@@ -1,0 +1,101 @@
+PL /SQL
+It is block structrue language.
+	A block structure is made up of 
+declare    // optional
+
+begin      // mandatory
+
+exception  // optional
+
+end        // mandatory
+
+;	   // mandatory
+
+
+Anonymous block: A block without a name.
+
+
+
+Stored Procedures: A procedure stored with a backend.
+	1.Functions
+	2.Procedures
+	3.Package
+	4.triggers
+
+Declaring a Variable:
+
+a1 number(5);
+
+a1,a2 number(5);  //invalid declaration (one variable per line)
+
+a1 varchar(20);
+
+a1 number(5) = 10; //'=' in pl/sql is a comparision operator (invalid)
+
+a1 number(5) := 10;
+
+a1 number(5) default 10;
+
+a1 number(5) not null;   //invalid
+
+a1 number(5) not null default 5; //default terms as an initial value
+
+a1 number(5) not null :=5;
+
+a2 a1%type;   //a2 is carried as the same type of a1 (Independent way of writing a program)
+
+a3 student.id%type;
+
+a4 student%rowtype; //a4 becomes a record(A group of dissimilar data) or a structure
+
+a5 number(5) :=&x;  //'&'- this has to be taken from keyboard(input), 'x' is a prompt
+
+a6 varchar(20) :=&x; // input is 'ABC'
+
+a7 varchar(20) :='&x';// input is ABC
+
+a8 number(5) :=&&x;   // input accepts once and doesn't re-accept
+
+
+1.Create a anonymous block to add two numbers
+
+declare
+a1 number(5) :=&x;
+a2 a1%type :=&y;
+a3 number(6);
+begin
+a3:=a1+a2;
+dbms_output.put_line('a='||a1||'b='||a2||'sum='||a3 );
+end;
+/
+
+2.Create a anonymous block to show quotient and remainder of two numbers
+
+
+declare
+a1 number(5) :=&x;
+a2 a1%type :=&y;
+a3 number(6);
+a4 number(6);
+begin
+a3:=a1/a2;
+a4:=a1 mod a2; // (or) a4:=mod a1,a2;
+dbms_output.put_line('a='||a1||'b='||a2||'quotient='||a3|| 'Remainder='||a4 );
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
